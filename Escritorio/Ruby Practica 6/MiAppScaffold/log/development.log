@@ -1,0 +1,33 @@
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-09-11 22:04:54.437198', '2024-09-11 22:04:54.437201') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateEstudiantes (20240911220444)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "estudiantes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nombres" varchar, "apellidos" varchar, "carrera" varchar, "carnet" varchar, "fecha_nacimiento" date, "edad" integer, "celular" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240911220444') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2024-09-11 17:07:10 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EstudiantesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering estudiantes/index.html.erb within layouts/application
+  [1m[36mEstudiante Load (0.1ms)[0m  [1m[34mSELECT "estudiantes".* FROM "estudiantes"[0m
+  ↳ app/views/estudiantes/index.html.erb:6
+  Rendered estudiantes/index.html.erb within layouts/application (Duration: 9.1ms | Allocations: 1914)
+  Rendered layout layouts/application.html.erb (Duration: 1055.7ms | Allocations: 99874)
+Completed 200 OK in 1156ms (Views: 1087.8ms | ActiveRecord: 1.7ms | Allocations: 115691)
+
+
+Started GET "/estudiantes/new" for 127.0.0.1 at 2024-09-11 17:07:16 -0500
+Processing by EstudiantesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering estudiantes/new.html.erb within layouts/application
+  Rendered estudiantes/_form.html.erb (Duration: 308.2ms | Allocations: 6424)
+  Rendered estudiantes/new.html.erb within layouts/application (Duration: 318.8ms | Allocations: 6781)
+  Rendered layout layouts/application.html.erb (Duration: 323.6ms | Allocations: 8260)
+Completed 200 OK in 532ms (Views: 328.8ms | ActiveRecord: 0.5ms | Allocations: 24052)
+
+
